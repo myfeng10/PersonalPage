@@ -1,0 +1,145 @@
+div.weight-browser h2 {
+    font-weight: bold;
+    font-size: 2em; /* Adjust size as necessary */
+    color: #fff;
+    text-transform: uppercase; /* Optional */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    transition: color 0.3s ease; /* Smooth transition like your button/input */
+    border-radius: 20px;
+    padding:5px;
+    border-bottom: 1px solid #FFA477;
+}
+
+div.weight-browser h2:hover {
+    color: #FFA477; /* Hover effect, if desired */
+}
+
+
+.weight-browser {
+    margin:15px;
+    text-align: center;
+  }
+
+.weight-content {
+    justify-content: center; /* Horizontally center the children */
+    align-items: center; /* Vertically center the children */ 
+    margin:10px 50px 10px 50px;
+}
+
+.weight-element {
+    margin-right: 20px; /* Add a gap between the input and the button */
+}
+
+.weight-display{
+    margin:0;
+}
+.btn-weight-submit{
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #666;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: inset -2px -2px 5px rgba(255,255,255,0.05),
+                inset 2px 2px 5px rgba(0,0,0,0.2);
+}
+.btn-weight-submit:hover {
+    background-color: #555; /* Slight color shift for hover feedback */
+}
+
+.btn-weight-submit:focus {
+    border-color: #555;
+    background-color: #444;
+    transform: scale(1.1); 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    outline: none; /* Removes default browser focus outline */
+}
+
+.btn-weight-submit:active {
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2); /* Inner shadow for a "pressed" effect */
+}
+
+.btn-weight-submit:disabled {
+    background-color: #888;  /* Grayed out background */
+    cursor: not-allowed;     /* Cursor indicating the button is not clickable */
+    box-shadow: none;        /* Removing the shadow to make it look more flat/disabled */
+    border-color: #aaa;      /* Lighter border */
+    color: #ccc;             /* Lighter font color */
+}
+
+.btn-weight-submit:disabled:hover {
+    background-color: #888;  /* Ensure that the hover state doesn't change the color */
+    transform: none;         /* Remove any hover effects like scaling */
+    box-shadow: none;        /* Ensure shadows don't appear on hover */
+}
+
+
+.weight-inputBtn{
+    flex:1;
+}
+
+
+/* Styling for the container */
+.weight-display {
+    width: 100%;
+    max-width: 600px; 
+    margin: 20px auto; 
+    border-radius: 15px; 
+    /* background: rgba(68, 68, 68, 0); Neumorphic background */
+    /* box-shadow: -4px -4px 10px rgba(255,255,255,0.05),  */
+                /* 4px 4px 10px rgba(0,0,0,0.2);  Neumorphic shadow */
+    overflow-y: auto; 
+    max-height: 400px; 
+    padding: 10px 20px; 
+    transition: box-shadow 0.3s ease; /* smooth transition */
+}
+
+/* Styling for the list itself */
+.weight-display ul {
+    list-style: none; 
+    margin: 0px; 
+    padding: 10px; 
+}
+
+/* Styling for each list item */
+.weight-display li {
+    display: flex; 
+    justify-content: space-between; 
+    padding: 8px 0; 
+    border-bottom: 1px dashed #555; 
+    color: #FFEBD1; 
+    transition: all 0.3s ease; /* smooth transition */
+}
+
+.weight-display li:last-child {
+    border-bottom: none; 
+}
+
+/* Hover effects for better interactivity */
+.weight-display li:hover {
+    color: #FFA477; 
+    background-color: #555; 
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    cursor: auto; 
+}
+
+/* Styling for the weight value */
+.weight-display .weight {
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: #FFC4B2; 
+}
+
+/* Styling for the timestamp */
+.weight-display .timestamp {
+    font-size: 0.9em; 
+    font-style: italic; 
+    color: #FFEBD1; 
+}
+
+
+
+
+

@@ -1,9 +1,9 @@
-// WeightRecorder.js
 import React, { useState, useEffect } from 'react';
+import "./WeightRecorder.css";
 
 function WeightRecorder() {
-    const [weight, setWeight] = useState(''); // Weight input
-    const [weights, setWeights] = useState([]); // List of recorded weights
+    const [weight, setWeight] = useState(''); 
+    const [weights, setWeights] = useState([]);
 
     useEffect(() => {
         const storedWeights = localStorage.getItem('weights');
@@ -13,27 +13,38 @@ function WeightRecorder() {
     }, []);
 
     const handleAddWeight = () => {
-        const updatedWeights = [...weights, weight];
+        const currentDate = new Date();
+        const timestamp = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
+        const updatedWeights = [...weights, { weight, timestamp }];
+        
         setWeights(updatedWeights);
         localStorage.setItem('weights', JSON.stringify(updatedWeights));
         setWeight(''); // Clear the input after adding
     };
 
     return (
-        <div>
+        <div className="weight-browser">
             <h2>Weight Recorder</h2>
-            <input 
-                type="number" 
-                value={weight} 
-                onChange={(e) => setWeight(e.target.value)} 
-                placeholder="Enter your weight" 
-            />
-            <button onClick={handleAddWeight}>Add Weight</button>
-            <ul>
-                {weights.map((w, index) => (
-                    <li key={index}>{w} kg</li>
+            <div className="weight-content">
+                <input className="weight-element"
+                    type="number" 
+                    value={weight} 
+                    onChange={(e) => setWeight(e.target.value)} 
+                    placeholder="Enter your weight" 
+                />
+                <button onClick={handleAddWeight} className="btn-weight-submit">Add Weight</button>
+    
+            <div className="weight-display">
+                <ul>
+                {weights.map((entry, index) => (
+                    <li key={index}>
+                        <span className="weight">{entry.weight} kg</span>
+                        <span className="timestamp">Recorded on: {entry.timestamp}</span>
+                    </li>
                 ))}
-            </ul>
+                </ul>
+            </div>
+        </div>
         </div>
     );
 }

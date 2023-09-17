@@ -1,5 +1,5 @@
 import React from 'react';
-import ClickCount from '../../detail/Usestate';
+import ClickCount from './Usestate';
 function Record(){
     return(
         <ClickCount />

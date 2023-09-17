@@ -25,6 +25,12 @@
     }
   }
   
+  html, body {
+    height: 100%;   /* ensures the full height of the viewport */
+    overflow-y: auto;  /* allows vertical scrolling when content overflows */
+    overflow-x: hidden;  /* prevents horizontal scrolling */
+}
+
   body {
     font-family: "Times New Roman", Times, serif;
     background-color: #666;
@@ -170,6 +176,16 @@
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     flex-wrap: wrap;
     border-radius: 0; 
+    .weight-content {
+    display: flex; /* Makes direct children line up in a row */
+    justify-content: flex-start; /* Align items to the start/left side */
+    align-items: center; /* Vertically aligns items in the center */
+    gap: 10px; /* Adds gap between flex items. Note: not supported in some older browsers like IE */
+}
+
+.weight-element:not(:last-child) {
+    margin-right: 10px; /* Adds a 10px margin to the right side of every .weight-element that's not the last child */
+}
   }
   nav ul {
     display: flex; /* Using flex here ensures list items line up in a row */
@@ -206,6 +222,8 @@
     /* font-family: "Lucida Console", "Courier New", monospace; */
     line-height: 30px; 
     transform: skew(0deg) scale(1.1);
+    text-shadow: 0 0 3px rgba(255, 147, 79, 0.8), 
+                0 0 6px rgba(255, 147, 79, 0.7);
   }
   
   nav ul li a:visited {
@@ -438,7 +456,7 @@
     box-shadow: inset -2px -2px 6px rgba(255,255,255,0.05), inset 2px 2px 6px rgba(0,0,0,0.2); /* Inner shadow for clicked effect */
   }
 
-  input[type="text"] {
+  input[type="number"] {
     flex-grow: 2;
     padding: 10px 15px;
     border: 1px solid #ccc;
@@ -451,16 +469,23 @@
                 inset 2px 2px 5px rgba(0,0,0,0.2);
   }
   
-  input[type="text"]:focus {
+  input[type="number"]:focus {
     border-color: #555;
     background-color: #444;
     transform: scale(1.1); 
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   }
   
-  input[type="text"]::placeholder {
+  input[type="number"]::placeholder {
     color: #aaa; /* slightly lighter placeholder text */
     opacity: 1;
   }
   
   
+
+  .scrollable-div {
+    height: 500px;   /* or whatever height you want */
+    overflow-y: auto; /* enables vertical scrolling */
+    overflow-x: hidden; /* prevents horizontal scrolling */
+  }
+
