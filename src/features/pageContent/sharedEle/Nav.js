@@ -6,6 +6,8 @@ function Nav() {
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
+          <li><Link to="/WeightRecorder">WeightRecorder</Link></li>
+          <li><Link to="/Record">Record</Link></li>
           {/* <li><Link to="/Main">Personal Page</Link></li> */}
           {/* ... other links ... */}
         </ul>

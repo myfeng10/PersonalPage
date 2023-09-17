@@ -1,392 +1,466 @@
-
-
 /* Universal Reset and box-sizing */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: rotate(-5deg); /* Added rotation */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  to {
-      opacity: 1;
-      transform: rotate(0deg); /* Reset rotation */
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-      transform: translateX(-100%) rotate(-10deg); /* Added rotation */
-  }
-  to {
-      transform: translateX(0) rotate(0); /* Reset rotation */
-  }
-}
-
-body {
-  font-family: "Times New Roman", Times, serif;
-  background-color: #666;
-  color: #FFEBD1; /* Adjusted for better readability against the background */
-  overflow: hidden;
-  font-size: 1rem; /* Default font size */
-  line-height: 1.6; /* Adjusted line height for better readability */
-  font-weight: 400; /* Regular font weight for normal text */
-  letter-spacing: 0.5px; /* Slight letter spacing to improve legibility */
-  word-spacing: 1px; /* Adjusted word spacing for better separation of words */
-  text-rendering: optimizeLegibility; /* Helps with text rendering and legibility */
-}
-
-/* Patterned background */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  /* background-image: url('../images/千寻pic.png');  Replace with your pattern image link */
-  z-index: -1;
-}
-
-/* Custom Scrollbars */
-body::-webkit-scrollbar {
-  width: 10px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #2E2E2E;
-  border-radius: 5px;
-}
-
-body::-webkit-scrollbar-track {
-  background-color: #666;
-}
-main {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 20px;
-}
-/* Neumorphic effects */
-.browser, aside, nav, form, input[type="submit"], footer {
-  border-radius: 15px; 
-  background: #444;
-  box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 
-              4px 4px 10px rgba(0,0,0,0.2);
-}
-
-header, footer, .browser {
-  padding: 20px;
-}
-
-header, footer {
-  background-color: #2E2E2E;
-  color: #FFEBD1;
-  text-align: center;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #555; 
-  box-shadow: 0 0 10px #0000001a;
-}
-
-/* h1, h2, h3 {
-  text-shadow: 0 0 3px rgba(255, 147, 79, 0.8), 
-              0 0 6px rgba(255, 147, 79, 0.7); 
-  color: #FFA477;
-  transition: text-shadow 0.3s ease;
-} */
-
-
-h1 {
-  font-variant: small-caps;
-  font-size: 2.5em;
-  color: #FFA477;
-  padding-right: 20px;
-  letter-spacing: 1px; 
-  margin-bottom: 10px; 
-  font-weight: bold; 
-
-}
-
-
-h1:hover, h2:hover, h3:hover {
-  text-shadow: 0 0 8px rgba(255, 147, 79, 0.9),
-              0 0 16px rgba(255, 147, 79, 0.8), 
-              0 0 24px rgba(255, 147, 79, 0.7), 
-              0 0 32px rgba(255, 147, 79, 0.6);
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", serif; /* Georgia is a soft font, but you can opt for others too */
-  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-}
-
-h1{
-  color: #FFC4B2;
-}
-h2 {
-  font-size: 2em; /* Slightly smaller than h1 but larger than regular text */
-  color: #FFD8CC; 
-  background-color: rgba(51, 51, 51,0.5);  /* Keeping the background to make it distinct */
-  display: inline-block;
-  padding: 0 5px;
-  margin: 10px 0; /* Creating some vertical space around */
-  font-weight: semi-bold; /* Slightly less emphasis than h1 */
-  border-bottom: 3px solid #FFA477; /* A subtle bottom border for visual interest */
-} 
-
-h3 {
-  font-size: 1.75em; /* Size to indicate its tertiary importance */
-  color: #FFC5B0;  /* An even more toned-down shade of the primary color */
-  margin: 10px 0; /* Some vertical spacing for separation */
-  font-weight: medium; /* Regular weight as it's of lesser importance than h1 and h2 */
-  text-transform: capitalize; /*Making the first letter of each word capital for visual interest */
-}
-
-aside > h2{
-  font-size: 1.5em;
   
-}
-
-.list:hover{
-  text-shadow: 0 0 8px rgba(255, 147, 79, 0.9),
-  0 0 16px rgba(255, 147, 79, 0.8), 
-  0 0 24px rgba(255, 147, 79, 0.7), 
-  0 0 32px rgba(255, 147, 79, 0.6);
-}
-
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #444;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-  flex-wrap: wrap;
-  border-radius: 0; 
-}
-nav ul {
-  display: flex; /* Using flex here ensures list items line up in a row */
-  flex-wrap: wrap; /* Allows list items to wrap */
-  list-style-type: none;
-  gap: 20px; /* Provides spacing between list items */
-  width: 100%; /* Take the full width to prioritize wrapping the list items first */
-
-}
-
-nav ul li {
-  animation: slideInFromLeft 0.5s ease-out;
-}
-
-nav ul li a, nav form input[type="submit"] {
-  font-size: 1rem; /* Increase font size */
-  background-color: #686868;
-  color: #FF934F;
-  text-decoration: none;
-  padding: 6px 12px; /* Increase padding for a larger touch/click area */
-  margin: 0;
-  border-radius: 5px;
-  text-transform: uppercase; /* Uppercase text */
-  font-weight: bold; 
-  line-height: 30px; 
-  transform: skew(-10deg);
-}
-
-nav ul li a:hover, nav form input[type="submit"]:hover {
-  z-index: 1;
-  color:#fff;
-  background-color: #666;
-  text-transform: lowercase;
-  font-family: "Lucida Console", "Courier New", monospace;
-  line-height: 30px; 
-  transform: skew(0deg) scale(1.1);
-}
-
-nav ul li a:visited {
-  background-color: #444;
-  color: #92ebfb;
-  text-transform: lowercase;
-}
-
-nav form {
-  display: flex;
-  align-items: center;
-}
-
-form {
-  display: flex;
-  gap: 10px;
-  background-color: #333;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-input[type="search"] {
-  flex-grow: 2;
-  padding: 10px 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  background-color: #666;
-  color: #fff;
-  transition: 0.3s;
-  box-shadow: inset -2px -2px 5px rgba(255,255,255,0.05),
-              inset 2px 2px 5px rgba(0,0,0,0.2);
-
-}
-
-input[type="search"]:focus {
-  border-color: #555;
-  background-color: #444;
-  transform: scale(1.1); 
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-}
-
-input[type="submit"] {
-  padding: 10px 15px;
-  border: none;
-  background-color: #555;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-input[type="submit"]:hover {
-  background-color: #444;
-}
-
-
-main {
-  display: flex;
-}
-
-div > ul {
-  list-style-type: none;  /* Removes default bullets */
-  padding-left: 20px;  /* Gives a little left padding for alignment */
-  margin: 10px 0;  /* Margin to separate from other elements */
-  background: #444;  /* Background consistent with other elements */
-  border-radius: 15px;  /* Rounded corners for softer feel */
-  box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 
-              4px 4px 10px rgba(0,0,0,0.2);  /* Neumorphic shadow */
-  overflow: hidden;  /* Ensures nested elements don't spill out of rounded corners */
-  animation: fadeIn 0.5s ease-in-out;  /* Reuse your fadeIn animation for a smooth appearance */
-}
-
- div > ul> li {
-  padding: 10px 20px;  /* Vertical and horizontal padding for space */
-  border-bottom: 1px solid #555;  /* Border between list items */
-  color: #FFEBD1;  /* Color consistent with other text on page */
-  transition: background-color 0.3s ease;  /* Smooth transition for hover effects */
-}
-
-div > ul> li:last-child {
-  border-bottom: none;  /* Removing the bottom border for the last item */
-}
-
-div > ul> li:hover {
-  background-color: #333;  /* Darker shade on hover */
-  color: #FFA477;  /* Text color change on hover for better readability */
-  cursor: pointer;  /* Indicates an interactive element */
-}
-
-div > ul > i a {
-  text-decoration: none;  /* Remove underlines from links */
-  color: inherit;  /* Use the color of the parent (the li) */
-  transition: color 0.3s ease;  /* Smooth color transition for hover effects */
-}
-
-div > ul> li a:hover {
-  color: #FFC4B2;  /* Lighter shade on hover for links */
-}
-
-aside {
-  flex: 0 0 5%;
-  padding: 0 20px;  
-  background-color: rgba(39, 31, 31, 0.7);
-  border-radius: 0;
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: rotate(-5deg); /* Added rotation */
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg); /* Reset rotation */
+    }
+  }
   
-}
-
-footer {
-  color: #fff;
-  border-radius: 0;
-  border-top: 2px solid #555;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  padding: 20px 50px; /* Increased padding for a spacious feel */
-  font-size: 0.9em; /* Slightly smaller text to differentiate from main content */
-  letter-spacing: 0.8px; /* Slight increase in letter spacing for better legibility */
-  line-height: 1.7; /* More breathing room for lines of text */
-}
-
-footer a {
-  color: #FFEBD1; /* A lighter shade for better contrast against the dark background */
-  text-decoration: none; /* Removing underlines for a cleaner look */
-  transition: color 0.3s ease; /* Smooth color transition for hover effects */
-}
-
-footer a:hover {
-  color: #FFA477; /* A warm shade for hover, consistent with your theme */
-}
-
-footer p {
-  margin: 15px 0; /* Slightly increased vertical margin for separation */
-}
-/* .border {
-  border: medium solid #FF934F ;
-  padding: 10px;
-  border-radius: 8px;
-  outline: medium dashed #92ebfb;
-  outline-offset: 10px;
-  max-width: 500px;
-  margin: 10px 0;
-} */
-
-.upper {
-  text-transform: uppercase;
-}
-
-.browser{
-  display:flex;
-  flex: 1;
-  background-color: rgba(0, 0, 0, 0);
-  gap: 30px;
-  animation: fadeIn 0.5s;
-}
-
-.section{
-  background-color: rgba(39, 31, 31, 0.7);
-  padding: 20px;  /* Add some space inside the card */
-  margin: 20px 0;  /* Add some space outside the card, especially between two consecutive .section elements */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for a lifted card effect */
-  border-radius: 20px;
-  width:330px;
-  justify-content: space-between;
-
-}
-
-
-.cursor {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0% {
-      opacity: 1;
+  @keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%) rotate(-10deg); /* Added rotation */
+    }
+    to {
+        transform: translateX(0) rotate(0); /* Reset rotation */
+    }
   }
-  50% {
-      opacity: 0;
+  
+  body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: #666;
+    color: #FFEBD1; /* Adjusted for better readability against the background */
+    overflow: hidden;
+    font-size: 1rem; /* Default font size */
+    line-height: 1.6; /* Adjusted line height for better readability */
+    font-weight: 400; /* Regular font weight for normal text */
+    letter-spacing: 0.5px; /* Slight letter spacing to improve legibility */
+    word-spacing: 1px; /* Adjusted word spacing for better separation of words */
+    text-rendering: optimizeLegibility; /* Helps with text rendering and legibility */
   }
-  100% {
-      opacity: 1;
+  
+  /* Patterned background */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* background-image: url('../images/千寻pic.png');  Replace with your pattern image link */
+    z-index: -1;
   }
-}
+  
+  /* Custom Scrollbars */
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #2E2E2E;
+    border-radius: 5px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: #666;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+  }
+  /* Neumorphic effects */
+  .browser, aside, nav, form, input[type="submit"], footer {
+    border-radius: 15px; 
+    background: #444;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 
+                4px 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  header, footer, .browser {
+    padding: 20px;
+  }
+  
+  header, footer {
+    background-color: #2E2E2E;
+    color: #FFEBD1;
+    text-align: center;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #555; 
+    box-shadow: 0 0 10px #0000001a;
+  }
+  
+  h1, h2, h3 {
+    text-shadow: 0 0 3px rgba(255, 147, 79, 0.8), 
+                0 0 6px rgba(255, 147, 79, 0.7); 
+    color: #FFA477;
+    transition: text-shadow 0.3s ease;
+  }
+  
+  
+  h1 {
+    font-variant: small-caps;
+    font-size: 2.5em;
+    color: #FFA477;
+    padding-right: 20px;
+    letter-spacing: 1px; 
+    margin-bottom: 10px; 
+    font-weight: bold; 
+  
+  }
+  
+  
+  h1:hover, h2:hover, h3:hover {
+    text-shadow: 0 0 8px rgba(255, 147, 79, 0.9),
+                0 0 16px rgba(255, 147, 79, 0.8), 
+                0 0 24px rgba(255, 147, 79, 0.7), 
+                0 0 32px rgba(255, 147, 79, 0.6);
+  }
+  
+  h1, h2, h3 {
+    font-family: "Georgia", serif; /* Georgia is a soft font, but you can opt for others too */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  }
+  
+  h1{
+    color: #FFC4B2;
+  }
+  h2 {
+    font-size: 2em; /* Slightly smaller than h1 but larger than regular text */
+    color: #FFD8CC; 
+    background-color: rgba(51, 51, 51,0.5);  /* Keeping the background to make it distinct */
+    display: inline-block;
+    padding: 0 5px;
+    margin: 10px 0; /* Creating some vertical space around */
+    font-weight: semi-bold; /* Slightly less emphasis than h1 */
+    border-bottom: 3px solid #FFA477; /* A subtle bottom border for visual interest */
+  } 
+  
+  h3 {
+    font-size: 1.75em; /* Size to indicate its tertiary importance */
+    color: #FFC5B0;  /* An even more toned-down shade of the primary color */
+    margin: 10px 0; /* Some vertical spacing for separation */
+    font-weight: medium; /* Regular weight as it's of lesser importance than h1 and h2 */
+    text-transform: capitalize; /*Making the first letter of each word capital for visual interest */
+  }
+  
+  aside > h2{
+    font-size: 1.5em;
+    
+  }
+  
+  .list:hover{
+    text-shadow: 0 0 8px rgba(255, 147, 79, 0.9),
+    0 0 16px rgba(255, 147, 79, 0.8), 
+    0 0 24px rgba(255, 147, 79, 0.7), 
+    0 0 32px rgba(255, 147, 79, 0.6);
+  }
+  
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #444;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+    border-radius: 0; 
+  }
+  nav ul {
+    display: flex; /* Using flex here ensures list items line up in a row */
+    flex-wrap: wrap; /* Allows list items to wrap */
+    list-style-type: none;
+    gap: 20px; /* Provides spacing between list items */
+    width: 100%; /* Take the full width to prioritize wrapping the list items first */
+  
+  }
+  
+  nav ul li {
+    animation: slideInFromLeft 0.5s ease-out;
+  }
+  
+  nav ul li a, nav form input[type="submit"] {
+    font-size: 1rem; /* Increase font size */
+    background-color: #686868;
+    color: #FF934F;
+    text-decoration: none;
+    padding: 6px 12px; /* Increase padding for a larger touch/click area */
+    margin: 0;
+    border-radius: 5px;
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: bold; 
+    line-height: 30px; 
+    transform: skew(-10deg);
+  }
+  
+  nav ul li a:hover, nav form input[type="submit"]:hover {
+    z-index: 1;
+    color:#fff;
+    background-color: #666;
+    /* text-transform: lowercase; */
+    /* font-family: "Lucida Console", "Courier New", monospace; */
+    line-height: 30px; 
+    transform: skew(0deg) scale(1.1);
+  }
+  
+  nav ul li a:visited {
+    background-color: #444;
+    color: #FFEBD1;
+    text-transform: lowercase;
+  }
+  
+  nav form {
+    display: flex;
+    align-items: center;
+  }
+  
+  form {
+    display: flex;
+    gap: 10px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  input[type="search"] {
+    flex-grow: 2;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #666;
+    color: #fff;
+    transition: 0.3s;
+    box-shadow: inset -2px -2px 5px rgba(255,255,255,0.05),
+                inset 2px 2px 5px rgba(0,0,0,0.2);
+  
+  }
+  
+  input[type="search"]:focus {
+    border-color: #555;
+    background-color: #444;
+    transform: scale(1.1); 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+  
+  input[type="submit"] {
+    padding: 10px 15px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #444;
+  }
+  
+  
+  main {
+    display: flex;
+  }
+  
+  div > ul {
+    list-style-type: none;  /* Removes default bullets */
+    padding-left: 20px;  /* Gives a little left padding for alignment */
+    margin: 10px 0;  /* Margin to separate from other elements */
+    background: #444;  /* Background consistent with other elements */
+    border-radius: 15px;  /* Rounded corners for softer feel */
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 
+                4px 4px 10px rgba(0,0,0,0.2);  /* Neumorphic shadow */
+    overflow: hidden;  /* Ensures nested elements don't spill out of rounded corners */
+    animation: fadeIn 0.5s ease-in-out;  /* Reuse your fadeIn animation for a smooth appearance */
+  }
+  
+   div > ul> li {
+    padding: 10px 20px;  /* Vertical and horizontal padding for space */
+    border-bottom: 1px solid #555;  /* Border between list items */
+    color: #FFEBD1;  /* Color consistent with other text on page */
+    transition: background-color 0.3s ease;  /* Smooth transition for hover effects */
+  }
+  
+  div > ul> li:last-child {
+    border-bottom: none;  /* Removing the bottom border for the last item */
+  }
+  
+  div > ul> li:hover {
+    background-color: #333;  /* Darker shade on hover */
+    color: #FFA477;  /* Text color change on hover for better readability */
+    cursor: pointer;  /* Indicates an interactive element */
+  }
+  
+  div > ul > i a {
+    text-decoration: none;  /* Remove underlines from links */
+    color: inherit;  /* Use the color of the parent (the li) */
+    transition: color 0.3s ease;  /* Smooth color transition for hover effects */
+  }
+  
+  div > ul> li a:hover {
+    color: #FFC4B2;  /* Lighter shade on hover for links */
+  }
+  
+  aside {
+    flex: 0 0 5%;
+    padding: 0 20px;  
+    background-color: rgba(39, 31, 31, 0.7);
+    border-radius: 0;
+    
+  }
+  
+  footer {
+    color: #fff;
+    border-radius: 0;
+    border-top: 2px solid #555;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding: 20px 50px; /* Increased padding for a spacious feel */
+    font-size: 0.9em; /* Slightly smaller text to differentiate from main content */
+    letter-spacing: 0.8px; /* Slight increase in letter spacing for better legibility */
+    line-height: 1.7; /* More breathing room for lines of text */
+  }
+  
+  footer a {
+    color: #FFEBD1; /* A lighter shade for better contrast against the dark background */
+    text-decoration: none; /* Removing underlines for a cleaner look */
+    transition: color 0.3s ease; /* Smooth color transition for hover effects */
+  }
+  
+  footer a:hover {
+    color: #FFA477; /* A warm shade for hover, consistent with your theme */
+  }
+  
+  footer p {
+    margin: 15px 0; /* Slightly increased vertical margin for separation */
+  }
+  /* .border {
+    border: medium solid #FF934F ;
+    padding: 10px;
+    border-radius: 8px;
+    outline: medium dashed #92ebfb;
+    outline-offset: 10px;
+    max-width: 500px;
+    margin: 10px 0;
+  } */
+  
+  .upper {
+    text-transform: uppercase;
+  }
+  
+  .browser{
+    display:flex;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0);
+    gap: 30px;
+    animation: fadeIn 0.5s;
+    width:100%;
+  }
+  
+  .section{
+    background-color: rgba(39, 31, 31, 0.7);
+    padding: 20px;  /* Add some space inside the card */
+    margin: 20px 0;  /* Add some space outside the card, especially between two consecutive .section elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for a lifted card effect */
+    border-radius: 20px;
+    width:330px;
+    justify-content: space-between;
+  
+  }
+  
+  
+  .cursor {
+    animation: blink 1s infinite;
+  }
+  
+  .scrollable-container {
+    width: 100%; /* or any specific width */
+    overflow-x: auto;
+    white-space: nowrap; /* prevents the content from wrapping to the next line */
+  }
+  
+  
+  @keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+  .scrollable-container {
+    width: 100%; /* or any specific width */
+    overflow-x: auto;
+    white-space: nowrap; /* prevents the content from wrapping to the next line */
+  }
+  .typing .cursor {
+    animation: blink 1s infinite;
+    margin:0;
+    padding: 0; 
+    display: inline-block;
+    color:green;
+  }
+  
+  /* Button Styles */
+  button {
+    display: inline-block;
+    font-family: "Times New Roman", Times, serif;
+    background-color: #444; /* Match the neumorphic theme */
+    color: #FF934F; /* Primary color from the theme */
+    border: none; 
+    border-radius: 15px;
+    padding: 10px 20px; /* Adequate padding for clickability */
+    font-size: 1rem; /* Consistent font size */
+    font-weight: bold; /* Make the text stand out */
+    text-transform: uppercase; /* Consistent with other text transforms in the theme */
+    cursor: pointer; /* Indicate clickability */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 4px 4px 10px rgba(0,0,0,0.2); /* Neumorphic shadow */
+  }
+  
+  button:hover {
+    background-color: #555; /* Darken the background on hover */
+    color: #FFEBD1; /* Lighten the text color on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: -2px -2px 8px rgba(255,255,255,0.05), 2px 2px 8px rgba(0,0,0,0.3); /* Adjusted shadow on hover */
+  }
+  
+  button:active {
+    transform: translateY(1px); /* Push the button down on click */
+    box-shadow: inset -2px -2px 6px rgba(255,255,255,0.05), inset 2px 2px 6px rgba(0,0,0,0.2); /* Inner shadow for clicked effect */
+  }
+
+  input[type="text"] {
+    flex-grow: 2;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #666;
+    color: #fff;
+    transition: 0.3s;
+    box-shadow: inset -2px -2px 5px rgba(255,255,255,0.05),
+                inset 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  input[type="text"]:focus {
+    border-color: #555;
+    background-color: #444;
+    transform: scale(1.1); 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+  
+  input[type="text"]::placeholder {
+    color: #aaa; /* slightly lighter placeholder text */
+    opacity: 1;
+  }
+  
+  

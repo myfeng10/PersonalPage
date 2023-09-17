@@ -1,6 +1,6 @@
 import React from 'react';
-import Aside from '../../Aside';
-import Browser from '../../Browser';
+import Aside from './Component/Aside';
+import Browser from './Component/Browser';
 
 function Main() {
   return (

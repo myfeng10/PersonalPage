@@ -1,9 +1,11 @@
 import React from 'react';
-import Header from './Header';
-import Nav from './Nav';
-import Main from './features/Home/Main';
-import Footer from './Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './features/pageContent/sharedEle/Header';
+import Nav from './features/pageContent/sharedEle/Nav';
+import Main from './features/pageContent/Home/Home';
+import Footer from './features/pageContent/sharedEle/Footer';
+import WeightRecorder from './features/pageContent/WeightRecorder/WeightRecorder';
+import Record from './features/pageContent/Record/Record';
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-
+        <Route path="/WeightRecorder" element={<WeightRecorder />} />
+        <Route path="/Record" element={<Record />} />
         {/* Add more routes as needed */}
       </Routes>
       <Footer />
