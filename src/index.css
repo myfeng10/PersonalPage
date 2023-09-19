@@ -429,6 +429,7 @@
   
   /* Button Styles */
   button {
+    margin-top:20px;
     display: inline-block;
     font-family: "Times New Roman", Times, serif;
     background-color: #444; /* Match the neumorphic theme */
@@ -456,7 +457,7 @@
     box-shadow: inset -2px -2px 6px rgba(255,255,255,0.05), inset 2px 2px 6px rgba(0,0,0,0.2); /* Inner shadow for clicked effect */
   }
 
-  input[type="number"] {
+  input {
     flex-grow: 2;
     padding: 10px 15px;
     border: 1px solid #ccc;
@@ -469,14 +470,14 @@
                 inset 2px 2px 5px rgba(0,0,0,0.2);
   }
   
-  input[type="number"]:focus {
+  input:focus {
     border-color: #555;
     background-color: #444;
     transform: scale(1.1); 
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   }
   
-  input[type="number"]::placeholder {
+  input::placeholder {
     color: #aaa; /* slightly lighter placeholder text */
     opacity: 1;
   }

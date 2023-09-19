@@ -1,8 +1,11 @@
 import React from 'react';
-import ClickCount from './Usestate';
+import {ClickCount,TaskManager} from './Component/Usestate';
 function Record(){
     return(
-        <ClickCount />
+        <div class="browser">
+            <ClickCount />
+            <TaskManager />
+        </div>
     );
 }
 export default Record;
